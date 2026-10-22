@@ -12,5 +12,5 @@ interface TournamentSource
 
     public function fetchEvent(
         string $externalId
-    ): ?TournamentData;
+    ); //: ?TournamentData;
 }
