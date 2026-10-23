@@ -1,10 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Contracts;
 
 use DateTimeImmutable;
+use App\Data\EventData;
+use App\EventSource;
 
-interface TournamentSource
+interface EventProvider
 {
     public function discoverEvents(
         DateTimeImmutable $since
@@ -12,5 +14,7 @@ interface TournamentSource
 
     public function fetchEvent(
         string $externalId
-    ); //: ?TournamentData;
+    ): ?EventData;
+
+    public function source(): EventSource;
 }
