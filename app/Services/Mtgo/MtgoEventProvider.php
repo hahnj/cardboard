@@ -6,6 +6,7 @@ use App\Contracts\EventProvider;
 use App\Data\DeckCardData;
 use App\Data\DeckData;
 use App\Data\EventData;
+use App\Data\PlayerData;
 use App\EventSource;
 use Carbon\CarbonImmutable;
 
@@ -35,9 +36,7 @@ final class MtgoEventProvider implements EventProvider
             endDate: new CarbonImmutable('2024-06-02'),
             decks: [
                 new DeckData(
-                    playerName: 'Player 1',
-                    name: 'Sample Deck',
-                    format: 'Pauper',
+                    player: new PlayerData(name: 'Player 1', externalId: 12345),
                     mainboard: [
                         new DeckCardData(name: 'Card A', quantity: 4),
                         new DeckCardData(name: 'Card B', quantity: 2),
