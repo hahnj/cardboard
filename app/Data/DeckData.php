@@ -7,13 +7,11 @@ namespace App\Data;
 final readonly class DeckData
 {
     /**
-     * @param list<DeckCardData> $mainboard
-     * @param list<DeckCardData> $sideboard
+     * @param  list<DeckCardData>  $mainboard
+     * @param  list<DeckCardData>  $sideboard
      */
     public function __construct(
-        public string $playerName,
-        public string $name,
-        public string $format,
+        public PlayerData $player,
         public array $mainboard,
         public array $sideboard,
         public ?int $placement = null,

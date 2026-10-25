@@ -1,9 +1,9 @@
 <?php
 
+use App\Board;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Board;
 
 return new class extends Migration
 {
@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('deck_id')->constrained()->onDelete('cascade');
             $table->foreignId('card_id')->constrained()->onDelete('cascade');
             $table->integer('quantity')->default(1);
-            $table->enum('board', [Board::Main->value, Board::Side->value])->nullable();
+            $table->enum('board', [Board::Main, Board::Side])->nullable();
             $table->timestamps();
         });
     }
