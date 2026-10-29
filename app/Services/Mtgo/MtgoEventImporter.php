@@ -4,7 +4,7 @@ namespace App\Services\Mtgo;
 
 use App\Data\EventData;
 
-final readonly class MtgoTournamentImporter
+final readonly class MtgoEventImporter
 {
     public function __construct(
         private MtgoClient $client,
@@ -13,7 +13,7 @@ final readonly class MtgoTournamentImporter
 
     public function import(string $url): EventData
     {
-        $html = $this->client->fetchTournamentPage($url);
+        $html = $this->client->fetchEventPage($url);
 
         return $this->parser->parse($html);
     }

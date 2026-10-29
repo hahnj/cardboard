@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Contracts\MtgoPayloadParser;
+use App\Services\Mtgo\MtgoChallengeParser;
+use App\Services\Mtgo\MtgoDecklistParser;
+use App\Services\Mtgo\MtgoLeagueParser;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
@@ -15,7 +19,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        if ($this->app->environment('local') && class_exists(\Laravel\Telescope\TelescopeServiceProvider::class)) {
+            $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
+            $this->app->register(TelescopeServiceProvider::class);
+        }
+        $this->app->tag([
+            MtgoChallengeParser::class,
+            MtgoLeagueParser::class,
+        ], 'mtgo.payload.parsers');
+        $this->app->when(MtgoDecklistParser::class)
+            ->needs(MtgoPayloadParser::class)
+            ->giveTagged('mtgo.payload.parsers');
     }
 
     /**

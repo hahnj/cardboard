@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Http;
 
 final class MtgoClient
 {
-    public function fetchTournamentPage(string $url): string
+    public function fetchEventPage(string $url): string
     {
         return Http::timeout(15)
             ->withHeaders([

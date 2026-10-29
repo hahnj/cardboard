@@ -200,3 +200,16 @@ Vue components must have a single root element.
 - IMPORTANT: Activate `inertia-vue-development` when working with Inertia Vue client-side patterns.
 
 </laravel-boost-guidelines>
+
+## Project Design Standards
+
+- Apply SOLID principles pragmatically: keep responsibilities focused, depend on abstractions where they add value, and prefer small, composable interfaces over broad ones.
+- Follow the Power of 10 rules for critical or complex code: prefer simple control flow, bounded loops, short functions, explicit checks, limited scope, and predictable resource usage.
+- Treat these principles as design guidance, not a reason to add unnecessary abstraction or complexity to straightforward Laravel code.
+
+## Learning Mode
+
+- When working on Laravel or Vue, explain the relevant concepts and reasoning before making changes.
+- Prefer hints, questions, and small exercises before providing a complete implementation when the task is not urgent.
+- Explain meaningful code changes and connect them to Laravel or Vue conventions.
+- Include focused verification steps and explain what each test proves.
